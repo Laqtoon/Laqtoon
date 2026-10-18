@@ -116,7 +116,8 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 /* متصفحات التطبيقات (تيك توك، إنستغرام، فيسبوك، سناب) تفتح أي فيديو يشتغل وحده في شاشة كاملة،
    فيها ما نشغلوش حتى فيديو تلقائياً — الزبون يضغط ويتفرج بالصوت والجودة الكاملة */
 const inAppBrowser = /musical_ly|trill_|TikTok|Bytedance|Instagram|FBAN|FBAV|FB_IAB|Snapchat/i.test(navigator.userAgent);
-const noAutoplay = reduceMotion || inAppBrowser;
+let noAutoplay = reduceMotion || inAppBrowser;
+try { if (sessionStorage.getItem("laqtoon-no-autoplay")) noAutoplay = true; } catch (e) {}
 const canHover = window.matchMedia("(hover: hover)").matches;
 const ORDER = SERVICES.map(s => s.id);
 const serviceName = id => SERVICES.find(s => s.id === id)[lang][0];
@@ -258,14 +259,9 @@ function stopPreview(el) {
   v.pause(); el.classList.remove("is-playing");
 }
 
-/* بدون ماوس (موبايل): المعاينة تشتغل لما الكرت يبان في الشاشة */
-const previewIO = !canHover && "IntersectionObserver" in window
-  ? new IntersectionObserver(entries => entries.forEach(e =>
-      e.isIntersecting ? playPreview(e.target) : stopPreview(e.target)), { threshold: 0.6 })
-  : null;
-function observePreviews() {
-  if (previewIO) document.querySelectorAll("[data-preview]").forEach(el => previewIO.observe(el));
-}
+/* المعاينات تخدم بس بالماوس (كمبيوتر). في الموبايل الكروت تعرض الغلاف، والزبون يضغط ويتفرج —
+   لأن بعض متصفحات التطبيقات (زي تيك توك) تفتح أي فيديو يخدم وحده في شاشة كاملة */
+function observePreviews() {}
 if (canHover) {
   document.addEventListener("mouseover", e => {
     const el = e.target.closest("[data-preview]"); if (el && !el.contains(e.relatedTarget)) playPreview(el);
@@ -324,8 +320,26 @@ let heroVisible = true;
 function startHero() {
   if (noAutoplay) return;
   if (!heroVideo.src) heroVideo.src = SHOWREEL.preview;
-  heroVideo.play().catch(() => {});
+  heroVideo.play().then(() => { if (heroVideo.webkitDisplayingFullscreen) blockAutoplay(); }).catch(() => {});
 }
+
+/* حماية: لو المتصفح حاول يفتح الشوريل في شاشة كاملة وحده، نسكروا الشاشة الكاملة
+   ونرجعوا لصورة الغلاف، وما نشغلوش حتى فيديو تلقائياً بعدها */
+function blockAutoplay() {
+  noAutoplay = true;
+  try { sessionStorage.setItem("laqtoon-no-autoplay", "1"); } catch (e) {}
+  try { heroVideo.webkitExitFullscreen && heroVideo.webkitExitFullscreen(); } catch (e) {}
+  try { if (document.fullscreenElement === heroVideo) document.exitFullscreen(); } catch (e) {}
+  heroVideo.pause();
+  heroVideo.removeAttribute("src");
+  heroVideo.load();
+}
+heroVideo.addEventListener("webkitbeginfullscreen", blockAutoplay);
+heroVideo.addEventListener("enterpictureinpicture", blockAutoplay);
+["fullscreenchange", "webkitfullscreenchange"].forEach(ev => document.addEventListener(ev, () => {
+  const fs = document.fullscreenElement || document.webkitFullscreenElement;
+  if (fs === heroVideo) blockAutoplay();
+}));
 if ("IntersectionObserver" in window) {
   new IntersectionObserver(([e]) => {
     heroVisible = e.isIntersecting;
