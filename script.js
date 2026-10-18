@@ -113,6 +113,10 @@ const t = k => I18N[lang][k];
 const PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
 const ARROW = '<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* متصفحات التطبيقات (تيك توك، إنستغرام، فيسبوك، سناب) تفتح أي فيديو يشتغل وحده في شاشة كاملة،
+   فيها ما نشغلوش حتى فيديو تلقائياً — الزبون يضغط ويتفرج بالصوت والجودة الكاملة */
+const inAppBrowser = /musical_ly|trill_|TikTok|Bytedance|Instagram|FBAN|FBAV|FB_IAB|Snapchat/i.test(navigator.userAgent);
+const noAutoplay = reduceMotion || inAppBrowser;
 const canHover = window.matchMedia("(hover: hover)").matches;
 const ORDER = SERVICES.map(s => s.id);
 const serviceName = id => SERVICES.find(s => s.id === id)[lang][0];
@@ -134,7 +138,7 @@ function parseVideo(src) {
 /* غلاف + معاينة (تشتغل لما تعدي الماوس، أو لما يبان الكرت في الموبايل) */
 function mediaHTML(w) {
   const poster = w.poster ? `<img src="${w.poster}" alt="" loading="lazy" decoding="async">` : "";
-  const preview = w.preview ? `<video muted loop playsinline preload="none" data-src="${w.preview}"></video>` : "";
+  const preview = w.preview ? `<video muted loop playsinline webkit-playsinline disablepictureinpicture preload="none" data-src="${w.preview}"></video>` : "";
   return poster + preview;
 }
 
@@ -245,7 +249,7 @@ function setFilter(f, scroll) {
 
 /* --- معاينات الفيديو --- */
 function playPreview(el) {
-  const v = el.querySelector("video[data-src]"); if (!v || reduceMotion) return;
+  const v = el.querySelector("video[data-src]"); if (!v || noAutoplay) return;
   if (!v.src) v.src = v.dataset.src;
   v.play().then(() => el.classList.add("is-playing")).catch(() => {});
 }
@@ -318,7 +322,7 @@ function observeReveal() {
 const heroVideo = $("#heroVideo");
 let heroVisible = true;
 function startHero() {
-  if (reduceMotion) return;
+  if (noAutoplay) return;
   if (!heroVideo.src) heroVideo.src = SHOWREEL.preview;
   heroVideo.play().catch(() => {});
 }
