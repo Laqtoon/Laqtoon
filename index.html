@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laqtoon | لقطون — Video Editing</title>
+  <meta name="description" content="لقطون — مونتاج ريلز، مونتاج سينمائي، ومونتاج إعلانات.">
+  <link rel="preload" href="assets/fonts/swissra-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="theme-color" content="#28B6F6">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="Laqtoon">
+        <img class="logo__img" src="assets/logo.png" alt="" width="48" height="40">
+        <span class="logo__text" data-i18n="brand">لقطون</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#services" data-i18n="nav.services">الخدمات</a>
+        <a href="#work" data-i18n="nav.work">أعمالي</a>
+        <a href="#about" data-i18n="nav.about">من أنا</a>
+        <a href="#contact" data-i18n="nav.contact">تواصل</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
+        <a href="#contact" class="btn btn--primary btn--sm hide-mobile" data-i18n="cta.short">ابدأ مشروعك</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== 1. Hero — Cinematic Showreel ===== -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero__stage" id="showreel">
+        <video class="hero__video" id="heroVideo" muted loop playsinline preload="auto"
+               poster="media/showreel.jpg" data-src="media/showreel-preview.mp4"></video>
+
+        <div class="hero__content">
+          <span class="reel-tag"><span class="reel-tag__dot"></span><span data-i18n="hero.tag">Cinematic Showreel</span></span>
+          <h1 class="hero__title" id="heroTitle" data-i18n-html="hero.title">كل لقطة<br><span class="accent">تحكي قصة.</span></h1>
+          <p class="hero__lead" data-i18n="hero.lead">الشوريل السينمائي — مختارات من شغلي في المونتاج السينمائي: قصة، جو، صوت، وتلوين.</p>
+          <div class="hero__cta">
+            <button type="button" class="btn btn--light" id="playReel">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <span data-i18n="hero.play">شاهد الشوريل كامل</span>
+            </button>
+            <a href="#services" class="btn btn--glass" data-i18n="hero.services">خدماتي</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. Services ===== -->
+    <section class="section section--tight" id="services">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-i18n="services.eyebrow">الخدمات</p>
+          <h2 class="section__title" data-i18n="services.title">ثلاث خدمات، ستايل واحد</h2>
+        </div>
+        <div class="svc-grid" id="servicesList"></div>
+      </div>
+    </section>
+
+    <!-- ===== 3. Work ===== -->
+    <section class="section section--alt" id="work">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-i18n="work.eyebrow">البورتفوليو</p>
+            <h2 class="section__title" data-i18n="work.title">أعمالي</h2>
+          </div>
+          <div class="filters" id="filters" role="tablist"></div>
+        </div>
+        <div id="workGroups"></div>
+      </div>
+    </section>
+
+    <!-- ===== Process ===== -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-i18n="process.eyebrow">طريقة الشغل</p>
+          <h2 class="section__title" data-i18n="process.title">من الفكرة للتسليم في 4 خطوات</h2>
+        </div>
+        <ol class="steps" id="stepsList"></ol>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section section--alt" id="about">
+      <div class="container about">
+        <div class="about__photo" aria-hidden="true">
+          <img class="about__logo" src="assets/logo-large.png" alt="">
+        </div>
+        <div class="about__body">
+          <p class="eyebrow" data-i18n="about.eyebrow">من أنا</p>
+          <h2 class="section__title" data-i18n="about.title">مونتير شغوف بالتفاصيل</h2>
+          <p data-i18n="about.text"></p>
+          <ul class="stats">
+            <li><strong>+4</strong><span data-i18n="stats.years">سنين خبرة</span></li>
+            <li><strong>+200</strong><span data-i18n="stats.projects">مشروع منجز</span></li>
+            <li><strong>+25</strong><span data-i18n="stats.clients">عميل</span></li>
+          </ul>
+          <ul class="tools">
+            <li>Premiere Pro</li>
+            <li>After Effects</li>
+            <li>DaVinci Resolve</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section contact" id="contact">
+      <div class="container contact__inner">
+        <p class="eyebrow" data-i18n="contact.eyebrow">تواصل</p>
+        <h2 class="contact__title" data-i18n="contact.title">عندك فيديو يحتاج لمسة؟</h2>
+        <p class="contact__lead" data-i18n="contact.lead">ابعتلي فكرتك وخلينا نحكوا على التفاصيل والسعر.</p>
+        <div class="contact__actions">
+          <a class="btn btn--whatsapp" id="whatsappBtn" href="https://wa.me/218916818292" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
+            <span data-i18n="contact.whatsapp">راسلني على واتساب</span>
+          </a>
+          <a class="btn btn--ghost" href="mailto:jehad1706@outlook.com">jehad1706@outlook.com</a>
+        </div>
+        <ul class="socials">
+          <li><a href="https://www.instagram.com/laqtoon" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@laqtoon" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year"></span> Laqtoon · لقطون</span>
+      <span data-i18n="footer.made">صُنع بشغف ✦ كل لقطة تحكي قصة</span>
+    </div>
+  </footer>
+
+  <!-- ===== Video modal ===== -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true">
+      <button class="modal__close" type="button" data-close aria-label="Close">✕</button>
+      <div class="modal__frame" id="modalFrame"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
