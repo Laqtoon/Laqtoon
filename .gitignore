@@ -5,3 +5,5 @@ upload/
 .claude/
 Thumbs.db
 desktop.ini
+.taste-skill/
+.playwright-cli/

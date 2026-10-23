@@ -6,7 +6,7 @@
 /* ---------- الشوريل السينمائي (أول قسم في الصفحة) ----------
    preview: مقطع قصير بدون صوت يخدم في الخلفية
    video:   الشوريل الكامل بالصوت (يتفتح لما تضغط "شاهد الشوريل كامل") */
-const SHOWREEL = { video: "media/showreel.mp4", preview: "media/showreel-preview.mp4", poster: "media/showreel.jpg" };
+const SHOWREEL = { video: "media/showreel.mp4", preview: "media/showreel-loop.mp4", poster: "media/showreel.jpg" };
 
 /* ---------- الأعمال ----------
    الأصليات في مجلد videos — والنسخ المضغوطة للموقع في مجلد media.
@@ -21,7 +21,7 @@ const WORKS = [
   { category: "cinematic", title: { ar: "سينمائي 01", en: "Cinematic 01" },   video: "media/cinematic-1.mp4", preview: "media/cinematic-1-preview.mp4", poster: "media/cinematic-1.jpg", vertical: true },
   { category: "cinematic", title: { ar: "سينمائي 02", en: "Cinematic 02" },   video: "media/cinematic-2.mp4", preview: "media/cinematic-2-preview.mp4", poster: "media/cinematic-2.jpg", vertical: true },
   { category: "cinematic", title: { ar: "سينمائي 03", en: "Cinematic 03" },   video: "media/cinematic-3.mp4", preview: "media/cinematic-3-preview.mp4", poster: "media/cinematic-3.jpg", vertical: true },
-  { category: "commercial", title: { ar: "إعلان ريكسونا", en: "Rexona Commercial" },         video: "media/commercial.mp4",  preview: "media/commercial-preview.mp4",  poster: "media/commercial.jpg",  vertical: true,
+  { category: "commercial", title: { ar: "إعلان ريكسونا", en: "Rexona Commercial" },         video: "media/commercial.mp4",  preview: "media/commercial-preview.mp4",  poster: "media/commercial-cover.jpg", vertical: true,
     client: "Rexona",
     desc: { ar: "إعلان لشركة ريكسونا (Rexona) — مونتاج لقطون.", en: "A commercial for Rexona, edited by Laqtoon." } },
 ];
@@ -67,6 +67,7 @@ const I18N = {
     "work.watchAd": "شاهد الإعلان", "work.orderAd": "اطلب إعلان لمشروعك",
     "process.eyebrow": "طريقة الشغل", "process.title": "من الفكرة للتسليم في 4 خطوات",
     "about.eyebrow": "من أنا", "about.title": "مونتير شغوف بالتفاصيل",
+    "about.stills": "لقطات من أعمالي السينمائية",
     "about.text": "أنا لقطون، مونتير بخبرة 4 سنين في مونتاج الريلز والفيديوهات السينمائية والإعلانات. خدمت مع أكثر من 25 عميل ونفذت أكثر من 200 مشروع. هدفي إن كل فيديو يطلع بإيقاع يشد، وصورة نظيفة، وقصة توصل للناس.",
     "contact.eyebrow": "تواصل", "contact.title": "عندك فيديو يحتاج لمسة؟",
     "contact.lead": "ابعتلي فكرتك وخلينا نحكوا على التفاصيل والسعر.",
@@ -92,6 +93,7 @@ const I18N = {
     "work.watchAd": "Watch the ad", "work.orderAd": "Get an ad for your brand",
     "process.eyebrow": "Process", "process.title": "From idea to delivery in 4 steps",
     "about.eyebrow": "About", "about.title": "An editor obsessed with details",
+    "about.stills": "Stills from my cinematic work",
     "about.text": "I'm Laqtoon, a video editor with 4 years of experience in reels, cinematic edits and commercials. I've worked with 25+ clients and delivered 200+ projects. My goal: every video has a gripping rhythm, a clean look, and a story that connects.",
     "contact.eyebrow": "Contact", "contact.title": "Got a video that needs magic?",
     "contact.lead": "Send me your idea and let's talk details and pricing.",
