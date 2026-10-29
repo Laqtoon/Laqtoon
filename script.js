@@ -24,6 +24,15 @@ const WORKS = [
   { category: "commercial", title: { ar: "إعلان ريكسونا", en: "Rexona Commercial" },         video: "media/commercial.mp4",  preview: "media/commercial-preview.mp4",  poster: "media/commercial-cover.jpg", vertical: true,
     client: "Rexona",
     desc: { ar: "إعلان لشركة ريكسونا (Rexona) — مونتاج لقطون.", en: "A commercial for Rexona, edited by Laqtoon." } },
+
+  /* موشن جرافيك — الأصليات في D:\me\motion-lab، والنسخ المضغوطة media/motion-*
+     spec: true = تصميم تجريبي (مش شغل طلبته الشركة) — تظهر عليه علامة Spec */
+  { category: "motion", title: { ar: "Adex — إعلان التطبيق", en: "Adex — App ad" },               video: "media/motion-adex.mp4",      preview: "media/motion-adex-preview.mp4",      poster: "media/motion-adex.jpg" },
+  { category: "motion", title: { ar: "Mega Store — إعلان التطبيق", en: "Mega Store — App ad" },   video: "media/motion-megastore.mp4", preview: "media/motion-megastore-preview.mp4", poster: "media/motion-megastore.jpg" },
+  { category: "motion", title: { ar: "البيك", en: "ALBAIK" }, spec: true,                         video: "media/motion-albaik.mp4",    preview: "media/motion-albaik-preview.mp4",    poster: "media/motion-albaik.jpg" },
+  { category: "motion", title: { ar: "ChatGPT بالعربي", en: "ChatGPT in Arabic" }, spec: true,    video: "media/motion-chatgpt.mp4",   preview: "media/motion-chatgpt-preview.mp4",   poster: "media/motion-chatgpt.jpg" },
+  { category: "motion", title: { ar: "لقطون — لوحة الأفكار", en: "Laqtoon — Idea board" },       video: "media/motion-board.mp4",     preview: "media/motion-board-preview.mp4",     poster: "media/motion-board.jpg" },
+  { category: "motion", title: { ar: "لقطون — ستايل Apple", en: "Laqtoon — Apple-style UI" },    video: "media/motion-apple.mp4",     preview: "media/motion-apple-preview.mp4",     poster: "media/motion-apple.jpg", vertical: true },
 ];
 
 /* ---------- الخدمات (نفس ترتيب الأقسام في الأعمال) ----------
@@ -38,6 +47,9 @@ const SERVICES = [
   { id: "commercial", cover: 6,
     ar: ["مونتاج إعلانات", "فيديوهات ترويجية وإعلانية توصل رسالة واضحة وتخدم أهدافك التسويقية."],
     en: ["Commercial & Ad Editing", "Promotional and advertising videos that communicate a clear message and support your marketing goals."] },
+  { id: "motion", cover: 12,
+    ar: ["موشن جرافيك", "إعلانات تطبيقات، تحريك لوقو، وفيديوهات موشن بحركة ناعمة وصوت مدروس."],
+    en: ["Motion Graphics", "App ads, logo animations and motion videos with smooth movement and crafted sound."] },
 ];
 
 const STEPS = [
@@ -58,11 +70,13 @@ const I18N = {
     "hero.lead": "مختارات من شغلي في المونتاج السينمائي — قصة، جو، صوت، وتلوين.",
     "hero.play": "شاهد الشوريل كامل", "hero.services": "خدماتي",
     "stats.years": "سنين خبرة", "stats.projects": "مشروع منجز", "stats.clients": "عميل",
-    "services.eyebrow": "الخدمات", "services.title": "ثلاث خدمات، ستايل واحد",
+    "services.eyebrow": "الخدمات", "services.title": "أربع خدمات، ستايل واحد",
     "services.explore": "شوف الأعمال",
     "work.eyebrow": "البورتفوليو", "work.title": "أعمالي",
     "work.all": "الكل", "work.projects": n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
     "work.featured": "مشروع مميز",
+    "work.spec": "Spec", "work.specTitle": "تصميم تجريبي — مش شغل طلبته الشركة",
+    "work.more": n => `شوف الكل (${n})`, "work.less": "عرض أقل",
     "work.featuredText": "فيديو إعلاني من مونتاج لقطون.",
     "work.watchAd": "شاهد الإعلان", "work.orderAd": "اطلب إعلان لمشروعك",
     "process.eyebrow": "طريقة الشغل", "process.title": "من الفكرة للتسليم في 4 خطوات",
@@ -84,11 +98,13 @@ const I18N = {
     "hero.lead": "A selection of my cinematic editing — story, atmosphere, sound and color.",
     "hero.play": "Watch full showreel", "hero.services": "My services",
     "stats.years": "Years of experience", "stats.projects": "Projects delivered", "stats.clients": "Clients",
-    "services.eyebrow": "Services", "services.title": "Three services, one signature style",
+    "services.eyebrow": "Services", "services.title": "Four services, one signature style",
     "services.explore": "Explore work",
     "work.eyebrow": "Portfolio", "work.title": "Selected work",
     "work.all": "All", "work.projects": n => n === 1 ? "1 project" : `${n} projects`,
     "work.featured": "Featured project",
+    "work.spec": "Spec", "work.specTitle": "Spec work — not commissioned by the brand",
+    "work.more": n => `Show all (${n})`, "work.less": "Show less",
     "work.featuredText": "An advertising video edited by Laqtoon.",
     "work.watchAd": "Watch the ad", "work.orderAd": "Get an ad for your brand",
     "process.eyebrow": "Process", "process.title": "From idea to delivery in 4 steps",
@@ -108,6 +124,8 @@ const I18N = {
    ========================================================= */
 let lang = "ar";
 let activeFilter = "all";
+let motionExpanded = false;
+const MOTION_LIMIT = 6;
 try { lang = localStorage.getItem("laqtoon-lang") || "ar"; } catch (e) {}
 
 const $ = (s, el = document) => el.querySelector(s);
@@ -187,11 +205,13 @@ function renderFilters() {
   ).join("");
 }
 
-function videoCard(w) {
+function videoCard(w, wide) {
   const i = WORKS.indexOf(w);
+  const cls = "vcard" + (wide ? " vcard--wide" : "") + (wide && w.vertical ? " vcard--fit" : "");
+  const spec = w.spec ? `<span class="chip chip--dark vcard__chip" title="${t("work.specTitle")}">${t("work.spec")}</span>` : "";
   return `
-    <article class="vcard" data-index="${i}" data-preview tabindex="0" role="button" aria-label="${w.title[lang]}">
-      ${mediaHTML(w)}
+    <article class="${cls}" data-index="${i}" data-preview tabindex="0" role="button" aria-label="${w.title[lang]}">
+      ${mediaHTML(w)}${spec}
       <div class="vcard__play"><span>${PLAY_ICON}</span></div>
       <h4 class="vcard__title">${w.title[lang]}</h4>
     </article>`;
@@ -225,7 +245,16 @@ function renderWork() {
     const items = WORKS.filter(w => w.category === id);
     if (!items.length) return "";
     const s = SERVICES.find(x => x.id === id);
-    const body = items.length === 1 ? featuredBlock(items[0]) : `<div class="vgrid">${items.map(videoCard).join("")}</div>`;
+    let body;
+    if (items.length === 1) body = featuredBlock(items[0]);
+    else if (id === "motion") {
+      /* الموشن أفقي في أغلبه — كروت عريضة، وأول 6 بس لين يضغط "شوف الكل" */
+      const shown = motionExpanded || activeFilter === "motion" ? items : items.slice(0, MOTION_LIMIT);
+      const more = items.length > MOTION_LIMIT && activeFilter !== "motion"
+        ? `<button type="button" class="btn btn--ghost work-more" data-more>${motionExpanded ? t("work.less") : t("work.more")(items.length)}</button>` : "";
+      body = `<div class="vgrid vgrid--wide">${shown.map(w => videoCard(w, true)).join("")}</div>${more}`;
+    }
+    else body = `<div class="vgrid">${items.map(w => videoCard(w)).join("")}</div>`;
     return `
       <div class="work-group" id="group-${id}">
         <div class="work-group__head">
@@ -364,6 +393,11 @@ $("#filters").addEventListener("click", e => {
 });
 
 $("#workGroups").addEventListener("click", e => {
+  if (e.target.closest("[data-more]")) {
+    motionExpanded = !motionExpanded; renderWork();
+    if (!motionExpanded) $("#group-motion").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    return;
+  }
   const b = e.target.closest("[data-play]"); if (b) return openWork(b.dataset.play);
   const c = e.target.closest("[data-index]"); if (c) openWork(c.dataset.index);
 });

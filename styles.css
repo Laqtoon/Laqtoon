@@ -216,7 +216,7 @@ html[lang="ar"] .hero__title { line-height: 1.3; padding-bottom: .22em; } /* م�
 .section__title { font-size: clamp(32px, 4.5vw, 52px); }
 
 /* ========== 2. Services ========== */
-.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .svc {
   display: flex; flex-direction: column;
   background: var(--surface); border: 1px solid var(--line);
@@ -227,7 +227,7 @@ html[lang="ar"] .hero__title { line-height: 1.3; padding-bottom: .22em; } /* م�
 .svc__media { position: relative; aspect-ratio: 4 / 5; background: var(--ink); overflow: hidden; }
 .svc__media .chip { position: absolute; top: 16px; inset-inline-start: 16px; z-index: 2; }
 .svc__body { padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.svc__body h3 { font-size: 23px; }
+.svc__body h3 { font-size: 22px; }
 .svc__body p { color: var(--muted); font-size: 15.5px; flex: 1; }
 .svc__cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; font-weight: 700; color: var(--accent-ink); }
 .svc:hover .svc__cta .arrow { transform: translateX(4px); }
@@ -283,6 +283,13 @@ html[dir="rtl"] .svc:hover .svc__cta .arrow { transform: scaleX(-1) translateX(4
 .vcard__play svg { width: 24px; height: 24px; fill: var(--ink); margin-left: 3px; } /* تعويض بصري للمثلث */
 .vcard:hover .vcard__play, .vcard__play.is-visible { opacity: 1; }
 .vcard:hover .vcard__play span { transform: scale(1.08); }
+
+/* كروت الموشن: عريضة 16:10، والطولي منها يتعرض كامل في النص بدل ما يتقص */
+.vgrid--wide { grid-template-columns: repeat(3, 1fr); }
+.vcard--wide { aspect-ratio: 16 / 10; }
+.vcard--fit > img, .vcard--fit > video { object-fit: contain; }
+.vcard__chip { position: absolute; z-index: 3; top: 14px; inset-inline-start: 14px; font-family: var(--font-en); letter-spacing: .04em; }
+.work-more { display: flex; margin: 28px auto 0; }
 
 /* المشروع المميز (الإعلان) */
 .feature {
@@ -374,7 +381,13 @@ html[dir="rtl"] .feature::before { background: radial-gradient(circle at 15% 20%
 .svc.reveal.is-visible:hover { transform: translateY(-6px); }
 
 /* ========== Responsive ========== */
+@media (max-width: 1100px) {
+  .svc-grid { grid-template-columns: repeat(2, 1fr); }
+  .svc__media { aspect-ratio: 16 / 11; }
+}
+
 @media (max-width: 960px) {
+  .vgrid--wide { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
   .about { grid-template-columns: 1fr; gap: 40px; }
   .about__stills { max-width: 480px; order: 1; } /* في الشاشات الصغيرة النص قبل اللقطات */
@@ -420,6 +433,8 @@ html[dir="rtl"] .feature::before { background: radial-gradient(circle at 15% 20%
   .svc-grid::-webkit-scrollbar, .vgrid::-webkit-scrollbar { display: none; }
   .svc, .vcard { scroll-snap-align: start; }
   .vgrid { grid-auto-columns: 64%; }
+  .vgrid--wide { grid-auto-columns: 86%; }
+  .svc__media { aspect-ratio: 4 / 5; }
   .svc:hover, .vcard:hover { transform: none; }
 
   .feature { grid-template-columns: 1fr; padding: 16px 16px 24px; }
