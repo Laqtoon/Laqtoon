@@ -15,24 +15,26 @@ const SHOWREEL = { video: "media/showreel.mp4", preview: "media/showreel-loop.mp
    poster:  صورة الغلاف
    desc:    وصف المشروع (اختياري) — اكتبه انت، فاضي = ما يظهرش */
 const WORKS = [
-  { category: "reels",     title: { ar: "ريلز 01", en: "Reel 01" },           video: "media/reel-1.mp4",      preview: "media/reel-1-preview.mp4",      poster: "media/reel-1.jpg",      vertical: true },
-  { category: "reels",     title: { ar: "ريلز 02", en: "Reel 02" },           video: "media/reel-2.mp4",      preview: "media/reel-2-preview.mp4",      poster: "media/reel-2.jpg",      vertical: true },
-  { category: "reels",     title: { ar: "ريلز 03", en: "Reel 03" },           video: "media/reel-3.mp4",      preview: "media/reel-3-preview.mp4",      poster: "media/reel-3.jpg",      vertical: true },
-  { category: "cinematic", title: { ar: "سينمائي 01", en: "Cinematic 01" },   video: "media/cinematic-1.mp4", preview: "media/cinematic-1-preview.mp4", poster: "media/cinematic-1.jpg", vertical: true },
-  { category: "cinematic", title: { ar: "سينمائي 02", en: "Cinematic 02" },   video: "media/cinematic-2.mp4", preview: "media/cinematic-2-preview.mp4", poster: "media/cinematic-2.jpg", vertical: true },
-  { category: "cinematic", title: { ar: "سينمائي 03", en: "Cinematic 03" },   video: "media/cinematic-3.mp4", preview: "media/cinematic-3-preview.mp4", poster: "media/cinematic-3.jpg", vertical: true },
-  { category: "commercial", title: { ar: "إعلان ريكسونا", en: "Rexona Commercial" },         video: "media/commercial.mp4",  preview: "media/commercial-preview.mp4",  poster: "media/commercial-cover.jpg", vertical: true,
-    client: "Rexona",
-    desc: { ar: "إعلان لشركة ريكسونا (Rexona) — مونتاج لقطون.", en: "A commercial for Rexona, edited by Laqtoon." } },
+  /* ريلز — أدكس بنسخها المتلقطنة (موشن لقطون فوق الريل الأصلي) + عمرة أراك مكة */
+  { category: "reels", title: { ar: "أدكس — خدمات في مكان واحد", en: "Adex — All in one app" },  video: "media/reel-adex7.mp4",  preview: "media/reel-adex7-preview.mp4",  poster: "media/reel-adex7.jpg",  vertical: true },
+  { category: "reels", title: { ar: "أدكس — خصم أول مشوار", en: "Adex — First ride offer" },     video: "media/reel-adex5.mp4",  preview: "media/reel-adex5-preview.mp4",  poster: "media/reel-adex5.jpg",  vertical: true },
+  { category: "reels", title: { ar: "أدكس — مندوب التوصيل", en: "Adex — Courier service" },      video: "media/reel-adexm2.mp4", preview: "media/reel-adexm2-preview.mp4", poster: "media/reel-adexm2.jpg", vertical: true },
+  { category: "reels", title: { ar: "أراك مكة — عمرة", en: "Arak Makkah — Umrah" },              video: "media/reel-3.mp4",      preview: "media/reel-3-preview.mp4",      poster: "media/reel-3.jpg",      vertical: true },
 
-  /* موشن جرافيك — الأصليات في D:\me\motion-lab، والنسخ المضغوطة media/motion-*
+  /* موشن جرافيك — الطولي أولاً ثم العرضي. الأصليات في D:\me\motion-lab و D:\me\j\شغل
      spec: true = تصميم تجريبي (مش شغل طلبته الشركة) — تظهر عليه علامة Spec */
+  { category: "motion", title: { ar: "بلاي مود — بطاقة لكل شاشة", en: "Play Mood — A card for every screen" }, video: "media/motion-playmood.mp4", preview: "media/motion-playmood-preview.mp4", poster: "media/motion-playmood.jpg", vertical: true },
+  { category: "motion", title: { ar: "أويا — أكاديمية الطيران", en: "OYA — Cabin crew academy" },  video: "media/motion-oya.mp4",       preview: "media/motion-oya-preview.mp4",       poster: "media/motion-oya.jpg",       vertical: true },
   { category: "motion", title: { ar: "Adex — إعلان التطبيق", en: "Adex — App ad" },               video: "media/motion-adex.mp4",      preview: "media/motion-adex-preview.mp4",      poster: "media/motion-adex.jpg" },
   { category: "motion", title: { ar: "Mega Store — إعلان التطبيق", en: "Mega Store — App ad" },   video: "media/motion-megastore.mp4", preview: "media/motion-megastore-preview.mp4", poster: "media/motion-megastore.jpg" },
   { category: "motion", title: { ar: "البيك", en: "ALBAIK" }, spec: true,                         video: "media/motion-albaik.mp4",    preview: "media/motion-albaik-preview.mp4",    poster: "media/motion-albaik.jpg" },
   { category: "motion", title: { ar: "ChatGPT بالعربي", en: "ChatGPT in Arabic" }, spec: true,    video: "media/motion-chatgpt.mp4",   preview: "media/motion-chatgpt-preview.mp4",   poster: "media/motion-chatgpt.jpg" },
-  { category: "motion", title: { ar: "لقطون — لوحة الأفكار", en: "Laqtoon — Idea board" },       video: "media/motion-board.mp4",     preview: "media/motion-board-preview.mp4",     poster: "media/motion-board.jpg" },
-  { category: "motion", title: { ar: "لقطون — ستايل Apple", en: "Laqtoon — Apple-style UI" },    video: "media/motion-apple.mp4",     preview: "media/motion-apple-preview.mp4",     poster: "media/motion-apple.jpg", vertical: true },
+
+  /* سينمائي */
+  { category: "cinematic", title: { ar: "سينمائي 01", en: "Cinematic 01" },   video: "media/cinematic-1.mp4", preview: "media/cinematic-1-preview.mp4", poster: "media/cinematic-1.jpg", vertical: true },
+  { category: "cinematic", title: { ar: "سينمائي 02", en: "Cinematic 02" },   video: "media/cinematic-2.mp4", preview: "media/cinematic-2-preview.mp4", poster: "media/cinematic-2.jpg", vertical: true },
+  { category: "cinematic", title: { ar: "سينمائي 03", en: "Cinematic 03" },   video: "media/cinematic-3.mp4", preview: "media/cinematic-3-preview.mp4", poster: "media/cinematic-3.jpg", vertical: true },
+  { category: "cinematic", title: { ar: "ريكسونا", en: "Rexona" },           video: "media/commercial.mp4",  preview: "media/commercial-preview.mp4",  poster: "media/commercial-cover.jpg", vertical: true },
 ];
 
 /* ---------- الخدمات (نفس ترتيب الأقسام في الأعمال) ----------
@@ -41,15 +43,44 @@ const SERVICES = [
   { id: "reels", cover: 0,
     ar: ["مونتاج ريلز", "محتوى قصير احترافي لريلز إنستغرام، تيك توك، ويوتيوب شورتس — إيقاع سريع يشد من أول ثانية."],
     en: ["Reels Editing", "Professional short-form content for Instagram Reels, TikTok and YouTube Shorts — fast pacing that hooks from the first second."] },
-  { id: "cinematic", cover: 3,
-    ar: ["مونتاج سينمائي", "سرد سينمائي، جو، تصميم صوت، تلوين، ولقطات متقنة تعطي فيديوك إحساس الأفلام."],
-    en: ["Cinematic Editing", "Cinematic storytelling, atmosphere, sound design, color grading and polished visual sequences."] },
-  { id: "commercial", cover: 6,
-    ar: ["مونتاج إعلانات", "فيديوهات ترويجية وإعلانية توصل رسالة واضحة وتخدم أهدافك التسويقية."],
-    en: ["Commercial & Ad Editing", "Promotional and advertising videos that communicate a clear message and support your marketing goals."] },
-  { id: "motion", cover: 12,
+  { id: "motion", cover: 4,
     ar: ["موشن جرافيك", "إعلانات تطبيقات، تحريك لوقو، وفيديوهات موشن بحركة ناعمة وصوت مدروس."],
     en: ["Motion Graphics", "App ads, logo animations and motion videos with smooth movement and crafted sound."] },
+  { id: "cinematic", cover: 10,
+    ar: ["مونتاج سينمائي", "سرد سينمائي، جو، تصميم صوت، تلوين، ولقطات متقنة تعطي فيديوك إحساس الأفلام."],
+    en: ["Cinematic Editing", "Cinematic storytelling, atmosphere, sound design, color grading and polished visual sequences."] },
+];
+
+/* ---------- أبرز العملاء ----------
+   الشعارات في assets/clients: كلها بدون خلفية ومقصوصة. r = عرض الشعار ÷ طوله،
+   والموقع يحسب منها الحجم باش كل الشعارات تبان بنفس الحجم للعين (العريض يقصر، المربع يصغر).
+   creators = صناع المحتوى: صورهم في دوائر صغيرة جنب بعض */
+const CLIENTS = [
+  { ar: "أدكس", en: "Adex", logo: "adex.png", r: 5.0 },
+  { ar: "ريكسونا", en: "Rexona", logo: "rexona.svg", r: 1.02 },
+  { ar: "بلاي مود", en: "Play Mood", logo: "playmood.png", r: 1.265 },
+  { ar: "أويا للطيران", en: "Fly OYA", logo: "oya.svg", r: 3.166 },
+  { ar: "ميجا ستور", en: "Mega Store", logo: "megastore.png", r: 1.469 },
+  { ar: "EFES", en: "EFES", logo: "efes.png", r: 1.369 },
+  { ar: "مجموعة التقدم", en: "Al-Takaddom Group", logo: "takaddum.png", r: 1.038 },
+  { ar: "باتركس", en: "Pattrix", logo: "pattrix.png", r: 4.262 },
+  { ar: "بابار", en: "BABAR", logo: "babar.png", r: 1.154 },
+  { ar: "سمو للدعاية", en: "Sumuw Creative Agency", logo: "sumuw.png", r: 1.777 },
+  { ar: "المراعي الخصبة", en: "Almarai Al-Khasiba", logo: "almarai.png", r: 0.731 },
+  { ar: "الأشقاء للبلاستيك", en: "Alasheka Plast", logo: "asheqa.png", r: 1.908 },
+  { ar: "المنهل", en: "Al-Manhal", logo: "manhal.png", r: 0.892 },
+  { ar: "سبارو", en: "Sparrow", logo: "sparrow.png", r: 1.281 },
+  { ar: "أراك مكة", en: "Arak Makkah", logo: "arak.png", r: 1.115 },
+  { ar: "مصنع الأسرة", en: "Al-Osra", logo: "osra.png", r: 1.262 },
+  { ar: "أسلوب للخدمات الإعلانية", en: "Uslub", logo: "uslub.png", r: 1.588 },
+  { ar: "النور للبصريات", en: "Al Noor Optical Center", logo: "nour.png", r: 1.708 },
+  { ar: "فيفوريت", en: "Favoritt", logo: "favorite.png", r: 5.474 },
+  { ar: "درب فت", en: "DripFit", logo: "dripfit.png", r: 1.515 },
+  { ar: "B.A Growth", en: "B.A Growth", logo: "bagrowth.png", r: 1.138 },
+];
+const CREATORS = [
+  { ar: "ميمو", en: "Memo", photo: "memo.png" },
+  { ar: "رواد فيلم", en: "Rawad Film", photo: "rawad.png" },
 ];
 
 const STEPS = [
@@ -70,7 +101,7 @@ const I18N = {
     "hero.lead": "مختارات من شغلي في المونتاج السينمائي — قصة، جو، صوت، وتلوين.",
     "hero.play": "شاهد الشوريل كامل", "hero.services": "خدماتي",
     "stats.years": "سنين خبرة", "stats.projects": "مشروع منجز", "stats.clients": "عميل",
-    "services.eyebrow": "الخدمات", "services.title": "أربع خدمات، ستايل واحد",
+    "services.eyebrow": "الخدمات", "services.title": "ثلاث خدمات، ستايل واحد",
     "services.explore": "شوف الأعمال",
     "work.eyebrow": "البورتفوليو", "work.title": "أعمالي",
     "work.all": "الكل", "work.projects": n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
@@ -79,6 +110,7 @@ const I18N = {
     "work.more": n => `شوف الكل (${n})`, "work.less": "عرض أقل",
     "work.featuredText": "فيديو إعلاني من مونتاج لقطون.",
     "work.watchAd": "شاهد الإعلان", "work.orderAd": "اطلب إعلان لمشروعك",
+    "clients.eyebrow": "العملاء", "clients.title": "أبرز العملاء", "clients.creators": "صناع محتوى",
     "process.eyebrow": "طريقة الشغل", "process.title": "من الفكرة للتسليم في 4 خطوات",
     "about.eyebrow": "من أنا", "about.title": "مونتير شغوف بالتفاصيل",
     "about.stills": "لقطات من أعمالي السينمائية",
@@ -98,7 +130,7 @@ const I18N = {
     "hero.lead": "A selection of my cinematic editing — story, atmosphere, sound and color.",
     "hero.play": "Watch full showreel", "hero.services": "My services",
     "stats.years": "Years of experience", "stats.projects": "Projects delivered", "stats.clients": "Clients",
-    "services.eyebrow": "Services", "services.title": "Four services, one signature style",
+    "services.eyebrow": "Services", "services.title": "Three services, one signature style",
     "services.explore": "Explore work",
     "work.eyebrow": "Portfolio", "work.title": "Selected work",
     "work.all": "All", "work.projects": n => n === 1 ? "1 project" : `${n} projects`,
@@ -107,6 +139,7 @@ const I18N = {
     "work.more": n => `Show all (${n})`, "work.less": "Show less",
     "work.featuredText": "An advertising video edited by Laqtoon.",
     "work.watchAd": "Watch the ad", "work.orderAd": "Get an ad for your brand",
+    "clients.eyebrow": "Clients", "clients.title": "Key clients", "clients.creators": "Content creators",
     "process.eyebrow": "Process", "process.title": "From idea to delivery in 4 steps",
     "about.eyebrow": "About", "about.title": "An editor obsessed with details",
     "about.stills": "Stills from my cinematic work",
@@ -174,7 +207,7 @@ function applyLang() {
     const v = t(el.dataset.i18nHtml); if (v) el.innerHTML = v;
   });
   $("#langToggle").textContent = lang === "ar" ? "EN" : "ع";
-  renderServices(); renderFilters(); renderWork(); renderSteps();
+  renderServices(); renderFilters(); renderWork(); renderClients(); renderSteps();
 }
 
 /* --- الخدمات --- */
@@ -248,13 +281,15 @@ function renderWork() {
     let body;
     if (items.length === 1) body = featuredBlock(items[0]);
     else if (id === "motion") {
-      /* الموشن أفقي في أغلبه — كروت عريضة، وأول 6 بس لين يضغط "شوف الكل" */
+      /* الموشن: الطولي فوق في صف لحاله، والعرضي تحته في كروت عريضة. أول 6 بس لين يضغط "شوف الكل" */
       const shown = motionExpanded || activeFilter === "motion" ? items : items.slice(0, MOTION_LIMIT);
+      const tall = shown.filter(w => w.vertical), wide = shown.filter(w => !w.vertical);
       const more = items.length > MOTION_LIMIT && activeFilter !== "motion"
         ? `<button type="button" class="btn btn--ghost work-more" data-more>${motionExpanded ? t("work.less") : t("work.more")(items.length)}</button>` : "";
-      body = `<div class="vgrid vgrid--wide">${shown.map(w => videoCard(w, true)).join("")}</div>${more}`;
+      body = (tall.length ? `<div class="vgrid vgrid--tall">${tall.map(w => videoCard(w)).join("")}</div>` : "")
+           + (wide.length ? `<div class="vgrid vgrid--wide">${wide.map(w => videoCard(w, true)).join("")}</div>` : "") + more;
     }
-    else body = `<div class="vgrid">${items.map(w => videoCard(w)).join("")}</div>`;
+    else body = `<div class="vgrid${items.length === 4 ? " vgrid--4" : ""}">${items.map(w => videoCard(w)).join("")}</div>`;
     return `
       <div class="work-group" id="group-${id}">
         <div class="work-group__head">
@@ -265,6 +300,29 @@ function renderWork() {
       </div>`;
   }).join("");
   observePreviews();
+}
+
+function renderClients() {
+  /* حجم موحد للعين: نفس المساحة لكل شعار، مع حد أقصى للعرض والطول */
+  const AREA = 8200, MAX_W = 190, MAX_H = 84;
+  const size = r => {
+    let w = Math.sqrt(AREA * r), h = w / r;
+    if (w > MAX_W) { w = MAX_W; h = w / r; }
+    if (h > MAX_H) { h = MAX_H; w = h * r; }
+    return [Math.round(w), Math.round(h)];
+  };
+  const logos = CLIENTS.filter(c => c.logo).map(c => {
+    const [w, h] = size(c.r);
+    return `<li class="client reveal" title="${c[lang]}">
+      <img src="assets/clients/${c.logo}" alt="${c[lang]}" style="--w:${w};--h:${h}" loading="lazy" decoding="async" onerror="this.closest('li').remove()">
+    </li>`;
+  }).join("");
+  const creators = CREATORS.length ? `<li class="client client--creators reveal">
+      <div class="creators">${CREATORS.map(c => `<img src="assets/clients/${c.photo}" alt="${c[lang]}" title="${c[lang]}" loading="lazy" decoding="async">`).join("")}</div>
+      <span>${t("clients.creators")}</span>
+    </li>` : "";
+  $("#clientsList").innerHTML = logos + creators;
+  observeReveal();
 }
 
 function renderSteps() {

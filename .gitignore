@@ -7,3 +7,6 @@ Thumbs.db
 desktop.ini
 .taste-skill/
 .playwright-cli/
+
+# الشعارات الأصلية اللي يبعتها لقطون — الموقع يستعمل النسخ المجهزة في assets/clients
+clients/
