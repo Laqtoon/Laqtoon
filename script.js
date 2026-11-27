@@ -25,6 +25,7 @@ const WORKS = [
      spec: true = تصميم تجريبي (مش شغل طلبته الشركة) — تظهر عليه علامة Spec */
   { category: "motion", title: { ar: "بلاي مود — بطاقة لكل شاشة", en: "Play Mood — A card for every screen" }, video: "media/motion-playmood.mp4", preview: "media/motion-playmood-preview.mp4", poster: "media/motion-playmood.jpg", vertical: true },
   { category: "motion", title: { ar: "أويا — أكاديمية الطيران", en: "OYA — Cabin crew academy" },  video: "media/motion-oya.mp4",       preview: "media/motion-oya-preview.mp4",       poster: "media/motion-oya.jpg",       vertical: true },
+  { category: "motion", title: { ar: "منصة إدراك — أوترو", en: "Edrak — App outro" },          video: "media/motion-edrak.mp4",     preview: "media/motion-edrak-preview.mp4",     poster: "media/motion-edrak.jpg" },
   { category: "motion", title: { ar: "Adex — إعلان التطبيق", en: "Adex — App ad" },               video: "media/motion-adex.mp4",      preview: "media/motion-adex-preview.mp4",      poster: "media/motion-adex.jpg" },
   { category: "motion", title: { ar: "Mega Store — إعلان التطبيق", en: "Mega Store — App ad" },   video: "media/motion-megastore.mp4", preview: "media/motion-megastore-preview.mp4", poster: "media/motion-megastore.jpg" },
   { category: "motion", title: { ar: "البيك", en: "ALBAIK" }, spec: true,                         video: "media/motion-albaik.mp4",    preview: "media/motion-albaik-preview.mp4",    poster: "media/motion-albaik.jpg" },
@@ -158,7 +159,7 @@ const I18N = {
 let lang = "ar";
 let activeFilter = "all";
 let motionExpanded = false;
-const MOTION_LIMIT = 6;
+const MOTION_LIMIT = 7;
 try { lang = localStorage.getItem("laqtoon-lang") || "ar"; } catch (e) {}
 
 const $ = (s, el = document) => el.querySelector(s);
