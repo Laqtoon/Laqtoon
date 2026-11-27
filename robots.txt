@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://laqtoon.com/sitemap.xml
