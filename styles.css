@@ -375,6 +375,14 @@ html[dir="rtl"] .feature::before { background: radial-gradient(circle at 15% 20%
 .contact__title { font-size: clamp(36px, 6vw, 68px); margin-bottom: 16px; }
 .contact__lead { color: var(--muted); font-size: 19px; margin-bottom: 36px; }
 .contact__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.contact__phone { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 18px; }
+.contact__phone a { font: 600 17px var(--font-en); color: var(--text); letter-spacing: .02em; }
+.contact__copy {
+  font: 600 13px var(--font-ar); color: var(--accent-ink); cursor: pointer;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+}
+.contact__copy:hover { border-color: var(--accent-ink); }
+.contact__hint { margin: 12px auto 0; max-width: 420px; color: var(--muted); font-size: 14px; }
 .socials { list-style: none; padding: 0; margin: 40px 0 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; }
 .socials a { font: 600 15px var(--font-en); color: var(--muted); transition: color .2s; }
 .socials a:hover { color: var(--accent-ink); }

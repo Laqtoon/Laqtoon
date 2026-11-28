@@ -119,6 +119,8 @@ const I18N = {
     "contact.eyebrow": "تواصل", "contact.title": "عندك فيديو يحتاج لمسة؟",
     "contact.lead": "ابعتلي فكرتك وخلينا نحكوا على التفاصيل والسعر.",
     "contact.whatsapp": "راسلني على واتساب",
+    "contact.copy": "انسخ الرقم", "contact.copied": "تم النسخ ✓",
+    "contact.inapp": "لو واتساب ما فتحش: اضغط ⋯ فوق واختار «فتح في المتصفح»، أو انسخ الرقم.",
     "footer.made": "صُنع بشغف ✦ كل لقطة تحكي قصة",
     "modal.soon": "الفيديو حيكون هنا قريباً 🎬",
   },
@@ -148,6 +150,8 @@ const I18N = {
     "contact.eyebrow": "Contact", "contact.title": "Got a video that needs magic?",
     "contact.lead": "Send me your idea and let's talk details and pricing.",
     "contact.whatsapp": "Message me on WhatsApp",
+    "contact.copy": "Copy number", "contact.copied": "Copied ✓",
+    "contact.inapp": "If WhatsApp didn't open: tap ⋯ at the top and choose “Open in browser”, or copy the number.",
     "footer.made": "Made with passion ✦ Every shot tells a story",
     "modal.soon": "Video coming soon 🎬",
   },
@@ -437,6 +441,47 @@ if ("IntersectionObserver" in window) {
   }, { threshold: 0.2 }).observe($("#showreel"));
 } else startHero();
 $("#playReel").addEventListener("click", () => openVideo(SHOWREEL.video, false));
+
+/* --- واتساب ---
+   متصفحات التطبيقات (تيك توك خاصة) تمنع النوافذ الجديدة وروابط التطبيقات، فالزر ما يفتح شي.
+   في الموبايل: نفتحوا تطبيق واتساب مباشرة (Android بـ intent، iPhone بـ whatsapp://)،
+   ولو ما انفتحش خلال لحظة نمشوا لـ wa.me في نفس الصفحة. والرقم ظاهر تحت الزر مع زر نسخ. */
+const WA_PHONE = "218916818292";
+const waWeb = `https://wa.me/${WA_PHONE}`;
+const isAndroid = /Android/i.test(navigator.userAgent);
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const waBtn = $("#whatsappBtn");
+if (!canHover) waBtn.removeAttribute("target");   // في الموبايل نفس الصفحة، مش نافذة جديدة
+if (inAppBrowser) $("#inAppHint").hidden = false;
+waBtn.addEventListener("click", e => {
+  if (canHover) return;                             // الكمبيوتر: الرابط العادي يكفي
+  e.preventDefault();
+  const app = isAndroid
+    ? `intent://send/?phone=${WA_PHONE}#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=${encodeURIComponent(waWeb)};end`
+    : `whatsapp://send?phone=${WA_PHONE}`;
+  let left = false;
+  const onHide = () => { left = true; };
+  document.addEventListener("visibilitychange", onHide, { once: true });
+  window.addEventListener("pagehide", onHide, { once: true });
+  location.href = app;
+  setTimeout(() => {                                // ما انفتحش التطبيق؟ نجربوا رابط الويب
+    if (!left && document.visibilityState === "visible") {
+      location.href = waWeb;
+      $("#inAppHint").hidden = false;
+    }
+  }, isIOS ? 1500 : 1200);
+});
+$("#copyPhone").addEventListener("click", async () => {
+  const b = $("#copyPhone"), num = "+" + WA_PHONE;
+  try { await navigator.clipboard.writeText(num); }
+  catch (err) {                                     // متصفحات قديمة/داخلية بدون clipboard API
+    const ta = document.createElement("textarea"); ta.value = num; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch (e2) {} ta.remove();
+  }
+  b.textContent = t("contact.copied");
+  setTimeout(() => { b.textContent = t("contact.copy"); }, 1800);
+});
 
 /* --- الأحداث --- */
 $("#langToggle").addEventListener("click", () => {
